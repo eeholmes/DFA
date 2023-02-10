@@ -10,10 +10,10 @@ In my field, DFAs are random walks (A=identity) so I was puzzled as to why the A
 
 ## Minor
 
-- [ ] Readme and vignettes code examples use "=" but R style uses "<-" for assignment.
-- [ ] https://sebkrantz.github.io/dfms/reference/DFM.html says it returns a class dfm which is "list-like". like? I looks like a list not "list-like". If it is a list then set class to c("dfm", "list") so that list methods recognize it as a list.
-- [ ] `?dfms` did not pull up the help page. Is there no help page for the package?
-- [ ] https://sebkrantz.github.io/dfms/reference/SKFS.html
+-  Readme and vignettes code examples use "=" but R style uses "<-" for assignment.
+-  https://sebkrantz.github.io/dfms/reference/DFM.html says it returns a class dfm which is "list-like". like? I looks like a list not "list-like". If it is a list then set class to c("dfm", "list") so that list methods recognize it as a list.
+-  `?dfms` did not pull up the help page. Is there no help page for the package?
+-  https://sebkrantz.github.io/dfms/reference/SKFS.html
 The covariance equation has a typo. I think you meant F^{smooth}_t and left out the { }
 
 
