@@ -1,31 +1,14 @@
 # Installation
+## Missing info on the description
 
-Installation failed on my M1 Mac.
-```
-ld: warning: directory not found for option '-L/opt/R/arm64/gfortran/lib/gcc/aarch64-apple-darwin20.6.0/12.0.1'
-ld: warning: directory not found for option '-L/opt/R/arm64/gfortran/lib'
-ld: library not found for -lgfortran
-clang: error: linker command failed with exit code 1 (use -v to see invocation)
-make: *** [dfms.so] Error 1
-ERROR: compilation failed for package ‘dfms’
-```
+https://sebkrantz.github.io/dfms/ and description on CRAN is missing key information that would allow a statistician who in not in econometrics to understand what this does. It would be good to add the following detail:
 
-Problem: no fortran compiler for M1 Macs in XCode. Problem discussed here: https://mac.r-project.org/tools/
+"It is a DFA where the factors follow a stationary VAR process of order p."
 
-Solution posted here https://github.com/RubD/Giotto_site/issues/11
-```
-# for R>=4.2.0
-curl -O https://mac.r-project.org/tools/gfortran-12.0.1-20220312-is-darwin20-arm64.tar.xz
+In my field, DFAs are random walks (A=identity) so I was puzzled as to why the A matrix was not identity and why the identifiability constraint was different. Then I read Banbura, M., & Modugno, M. and realized this a different type of DFA. You might also add that this type of DFA is (widely?) used in econometrics.
 
-# unpack
-sudo tar fxz gfortran-12.0.1-20220312-is-darwin20-arm64.tar.xz -C /
 
-# /opt/R/arm64/gfortran/SDK has to point to your macOS SDK
-# EEH: this didn't work for me but was able to install anyhow and run example
-sudo gfortran-update-sdk
-```
-
-Notes as I am working
+## Minor
 
 - [ ] Readme and vignettes code examples use "=" but R style uses "<-" for assignment.
 - [ ] https://sebkrantz.github.io/dfms/reference/DFM.html says it returns a class dfm which is "list-like". like? I looks like a list not "list-like". If it is a list then set class to c("dfm", "list") so that list methods recognize it as a list.
@@ -61,23 +44,47 @@ The class is shown as "dfm", but it appears to be a list also. In this case, one
 
 https://sebkrantz.github.io/dfms/reference/DFM.html
 
-In the value section, X_imp is one of the values returned, but how it is imputed is not given. Is this the Kalman smoother output from the estimated model? Or something else.
+In the value section, X_imp is one of the values returned, but how it is imputed is not given. Is this the Kalman smoother output from the estimated model? Or something else? tsnarmimp?
 
 ## No info on the residuals
 
-No information on what type of residuals are returned. Link is to the vars residuals() function, but that has no information either. I am assuming that the economics DFA field, there are a standard type of residuals being used, but would be helpful to say which ones.
-
-*I'll add a list of the possible model residuals later*
+No information on what type of residuals are returned. Link is to the vars residuals() function, but that has no information either. I am assuming that the economics DFA field, there are a standard type of residuals being used, but would be helpful to say which ones. *Note, I'll add the options later. Need to look them up.*
 
 ## No info on fitted.
 
-Same re fitted(). No info in the vars help page either. For conditional state-space models, the meaning of "fitted" can have multiple definitions. I can make a good guess, but it'd be better to be explicit by saying.
-
-*I'll add an example later*
+Same re fitted(). No info in the vars help page either. For conditional state-space models, the meaning of "fitted" can have multiple definitions. I can make a good guess, but it'd be better to be explicit by saying. *I'll add an example later*
 
 ## Nothing mentioned about the F_0 and P_0 assumptions
 
-Different algorithms and authors take different approaches. Which one is used here?
+Different algorithms and authors take different approaches. Which one is used here? *I'll need to read Banbura, M., & Modugno, M.  to see what they do.*
+
+## Installation
+
+Installation failed on my M1 Mac at first. Probably just my machine set-up's fault.
+
+```
+ld: warning: directory not found for option '-L/opt/R/arm64/gfortran/lib/gcc/aarch64-apple-darwin20.6.0/12.0.1'
+ld: warning: directory not found for option '-L/opt/R/arm64/gfortran/lib'
+ld: library not found for -lgfortran
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+make: *** [dfms.so] Error 1
+ERROR: compilation failed for package ‘dfms’
+```
+
+Problem: no fortran compiler for M1 Macs in XCode. Problem discussed here: https://mac.r-project.org/tools/
+
+Solution posted here https://github.com/RubD/Giotto_site/issues/11
+```
+# for R>=4.2.0
+curl -O https://mac.r-project.org/tools/gfortran-12.0.1-20220312-is-darwin20-arm64.tar.xz
+
+# unpack
+sudo tar fxz gfortran-12.0.1-20220312-is-darwin20-arm64.tar.xz -C /
+
+# /opt/R/arm64/gfortran/SDK has to point to your macOS SDK
+# EEH: this didn't work for me but was able to install anyhow and run example
+sudo gfortran-update-sdk
+```
 
 
 
