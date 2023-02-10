@@ -1,2 +1,3 @@
 # DFA
-working on new chapter for atsa-es
+
+Notes for DFA review
