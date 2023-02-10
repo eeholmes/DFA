@@ -1,7 +1,7 @@
 # Installation
 ## Missing info on the description
 
-https://sebkrantz.github.io/dfms/ and description on CRAN is missing key information that would allow a statistician who in not in econometrics to understand what this does. It would be good to add the following detail:
+https://sebkrantz.github.io/dfms/ and description on CRAN is missing key information that would allow a statistician who is not in econometrics to understand what this does. It would be good to add the following detail:
 
 "It is a DFA where the factors follow a stationary VAR process of order p."
 
