@@ -58,6 +58,10 @@ Same re fitted(). No info in the vars help page either. For conditional state-sp
 
 Different algorithms and authors take different approaches. Which one is used here? *I'll need to read Banbura, M., & Modugno, M.  to see what they do.*
 
+## What's going on with the rotation? 
+
+Why is C not returned with the identifiability constraint? For my test case, my data has missing values so Banbura, M., & Modugno, M. should have been used. They specify a identifiability contraint with the $r \times r$ matrix at top of C set to identity. But the returned C had all values. So that means there is a rotation being done post estimation. Need to look that up and that info should be added to the DFM() details.
+
 ## Installation
 
 Installation failed on my M1 Mac at first. Probably just my machine set-up's fault.
